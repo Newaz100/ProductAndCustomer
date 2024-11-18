@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+<h1>Product Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Name</h4>
+        <p class="card-text">
+            <strong>Description:</strong> @Model.Description <br />
+            <strong>Price:</strong> @Model.Price.ToString("C") <br />
+            <strong>Stock Quantity:</strong> @Model.StockQuantity <br />
+            <strong>Category:</strong> @Model.Category <br />
+        </p>
+        <a href="@Url.Action("EditProduct", "Product", new { id = Model.ProductId })" class="btn btn-primary">Edit</a>
+        <a href="@Url.Action("DeleteProduct", "Product", new { id = Model.ProductId })" class="btn btn-danger">Delete</a>
+        <a href="@Url.Action("ProductList", "Product")" class="btn btn-secondary">Back to Product List</a>
+    </div>
+</div>
+

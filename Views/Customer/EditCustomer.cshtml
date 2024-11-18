@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "EditCustomer";
+}
+
+<h2>Edit Customer</h2>
+
+@using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Include CustomerId as a hidden field -->
+    <input type="hidden" name="CustomerId" value="@Model.CustomerId" />
+
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" name="FirstName" class="form-control" id="FirstName" value="@Model.FirstName" />
+        <span class="text-danger">@Html.ValidationMessage("FirstName")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" name="LastName" class="form-control" id="LastName" value="@Model.LastName" />
+        <span class="text-danger">@Html.ValidationMessage("LastName")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" name="Email" class="form-control" id="Email" value="@Model.Email" />
+        <span class="text-danger">@Html.ValidationMessage("Email")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Phone">Phone</label>
+        <input type="text" name="Phone" class="form-control" id="Phone" value="@Model.Phone" />
+        <span class="text-danger">@Html.ValidationMessage("Phone")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Address">Address</label>
+        <textarea name="Address" class="form-control" id="Address">@Model.Address</textarea>
+        <span class="text-danger">@Html.ValidationMessage("Address")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="DateJoined">Date Joined</label>
+        <input type="date" name="DateJoined" class="form-control" id="DateJoined" value="@Model.DateJoined.ToString("yyyy-MM-dd")" />
+        <span class="text-danger">@Html.ValidationMessage("DateJoined")</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}
+
+<a href="@Url.Action("CustomerList", "Customer")" class="btn btn-secondary">Back to Customer List</a>
+

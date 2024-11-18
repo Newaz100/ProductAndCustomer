@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "CreateCustomer";
+}
+
+<h2>Create Customer</h2>
+
+<!-- Customer Creation Form -->
+@using (Html.BeginForm("CreateCustomer", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" name="FirstName" class="form-control" id="FirstName" placeholder="Enter First Name" value="@Model" />
+        <span class="text-danger">@Html.ValidationMessage("FirstName")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" name="LastName" class="form-control" id="LastName" placeholder="Enter Last Name" value="@Model" />
+        <span class="text-danger">@Html.ValidationMessage("LastName")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" name="Email" class="form-control" id="Email" placeholder="Enter Email" value="@Model" />
+        <span class="text-danger">@Html.ValidationMessage("Email")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Phone">Phone (Optional)</label>
+        <input type="text" name="Phone" class="form-control" id="Phone" placeholder="Enter Phone Number" value="@Model" />
+        <span class="text-danger">@Html.ValidationMessage("Phone")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Address">Address (Optional)</label>
+        <textarea name="Address" class="form-control" id="Address" placeholder="Enter Address">@Model</textarea>
+        <span class="text-danger">@Html.ValidationMessage("Address")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="DateJoined">Date Joined</label>
+        <input type="date" name="DateJoined" class="form-control" id="DateJoined" value="@Model?.DateJoined?.ToString(" yyyy-MM-dd")" />
+        <span class="text-danger">@Html.ValidationMessage("DateJoined")</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Customer</button>
+}
+
+<!-- Back to Customer List link -->
+<a href="@Url.Action("CustomerList", "Customer")" class="btn btn-secondary">Back to Customer List</a>
+
